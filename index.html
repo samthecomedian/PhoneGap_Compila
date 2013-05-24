@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Prima applicazione PhoneGap</title>
+    <!--metadato viewport obbligatorio. dice di non scalare i contenuti della pagina, ma di visualizzarli 1:1-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    <!--Inclusione Cordova/PhoneGap-->
+    <script src="js/cordova-2.4.0.js"></script>
+    
+    <script>
+        //caricamento dom
+        function avvio() {
+            document.addEventListener('deviceready', dispPronto);
+        }
+        
+        //caricamento phone gap
+        function dispPronto() {
+           
+            //alert('ci sono');
+            
+            var info = document.getElementById("info");
+            info.style.opacity = 1;
+            info.style.webkitTransform = "scale(1)";
+            
+            document.getElementById("device")
+            .innerHTML = window.device.name;
+            
+            document.getElementById("identificativo")
+            .innerHTML = window.device.uuid;
+            
+            document.getElementById("piattaforma")
+            .innerHTML = window.device.platform;
+            
+        }
+    </script>
+    
+    <style>
+        /*reset veloce*/
+        *{
+            margin: 0;
+            padding: 0;
+            
+        }
+        
+        body{
+            
+            color: #555;
+            font-family: Arial;
+            font-size: 22px;
+        }
+        
+        h1{
+            height: 50px;
+            font-size: 30px;
+            line-height: 50px;
+            background: -webkit-linear-gradient(top, #009eee, #00909e);
+            color: white;
+            text-align: center;
+            text-shadow: 2px 2px 5px black;
+        }
+        
+        #info{
+            width: 80%;/*in percentuale perché metto le mani avanti per l'orientamento*/
+            margin: 30px auto;
+            -webkit-transition: all 1s ease;
+            -webkit-transform: scale(2);
+            opacity: 0;
+        }
+        
+        #info p{
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body onload="avvio()">
+
+<h1>Prima App PhoneGap</h1>
+
+<div id="info">
+    <p>Nome device <strong id="device">...</strong></p>
+    <p>ID <strong id="identificativo">...</strong></p>
+    <p>Piattaform <strong id="piattaforma">...</strong></p>
+</div>
+</body>
+</html>
